@@ -20,6 +20,9 @@ Spree::Variant.class_eval do
 
   #TODO-Proper fix for this hack :)
   def price_in(currency)
-    Spree::Price.new(:amount => price, :currency => "USD")
+    Spree::Price.new.tap do |p|
+      p.currency = "USD"
+      p.amount = price
+    end
   end
 end
