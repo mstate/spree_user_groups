@@ -26,7 +26,7 @@ Deface::Override.new(
 Deface::Override.new(
   :virtual_path => "spree/admin/users/show",
   :name => "user_show_user_group_icon",
-  :insert_after => "[erb-loud]:contains('@user.email')",
+  :insert_after => "erb[loud]:contains('@user.email')",
   :text => show_star_icon,
 )
 Deface::Override.new(
