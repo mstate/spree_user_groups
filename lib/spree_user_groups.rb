@@ -9,6 +9,8 @@ require 'spree_core'
         Rails.env.production? ? require(c) : load(c)
       end
       
+      Spree::PermittedAttributes.user_attributes << :user_group_id
+      
       if File.basename( $0 ) != "rake"
         begin
           config.spree.calculators.add_class('user_groups') 
