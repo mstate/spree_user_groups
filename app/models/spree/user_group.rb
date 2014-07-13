@@ -10,4 +10,8 @@ class Spree::UserGroup < ActiveRecord::Base
     return t(:none) if calculator.nil?
     calculator.description
   end
+
+  def price_for_variant variant
+    user_groups_variants.where(variant: variant).first.try(:price)
+  end
 end
