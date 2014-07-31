@@ -3,7 +3,7 @@ Spree::Variant.class_eval do
 
   def price_for_user(user)
     if user && user.user_group
-      user.user_group.price_for_variant(variant)
+      user.user_group.price_for_variant(self)
     else
       price
     end
