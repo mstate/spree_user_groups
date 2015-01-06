@@ -4,7 +4,7 @@ class Spree::UserGroup < ActiveRecord::Base
   has_many :user_groups_variants
   has_many :variants, :through => :user_groups_variants
 
-  include Spree::Core::CalculatedAdjustments
+  include Spree::CalculatedAdjustments
   
   def calculator_description
     return t(:none) if calculator.nil?
