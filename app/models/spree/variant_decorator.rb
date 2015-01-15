@@ -2,6 +2,7 @@ Spree::Variant.class_eval do
   include ActionView::Helpers
 
   def price_for_user(user)
+    byebug
     if user && user.user_group
       user.user_group.price_for_variant(self) || price
     else
@@ -18,7 +19,7 @@ Spree::Variant.class_eval do
   #TODO-Proper fix for this hack :)
   def price_in(currency)
     Spree::Price.new.tap do |p|
-      p.currency = "USD"
+      p.currency = Spree::Store.current.default_currency
       p.amount = price
     end
   end
